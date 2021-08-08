@@ -9,18 +9,18 @@ class ClothingTag(models.Model):
     BRAND = 'BR'
     COLOR = 'CO'
     TYPE = 'TY'
-    OTHER = 'OT'
     
     TAG_CATEGORY_CHOICES = [
         (TYPE, 'Type'),
         (BRAND, 'Brand'),
         (COLOR, 'Color'),
-        (OTHER, 'Other'),
     ]
     
     # REQUIRED FIELDS
     name = models.CharField(max_length=200, unique=True)
-    category = models.CharField(max_length=200, choices=TAG_CATEGORY_CHOICES)
+    
+    # OPTIONAL FIELDS
+    category = models.CharField(max_length=200, choices=TAG_CATEGORY_CHOICES, blank=True)
     
     class Meta:
         ordering = ['category', 'name']
@@ -48,7 +48,7 @@ class ClothingItem(models.Model):
     previous_wears = models.PositiveIntegerField(null=True, blank=True)
     # If provided, add to the number of wear dates.
     description = models.TextField(blank=True)
-    tags = models.ManyToManyField(ClothingTag)
+    tags = models.ManyToManyField(ClothingTag, blank=True)
     # Belongs to ClothingItem because tags will be added to clothes in the
     # form, not the other way around.
     
