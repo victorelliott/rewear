@@ -12,9 +12,9 @@ class ClothingTag(models.Model):
     OTHER = 'OT'
     
     TAG_CATEGORY_CHOICES = [
+        (TYPE, 'Type'),
         (BRAND, 'Brand'),
         (COLOR, 'Color'),
-        (TYPE, 'Type'),
         (OTHER, 'Other'),
     ]
     
@@ -31,6 +31,7 @@ class ClothingTag(models.Model):
         
     def get_absolute_url(self):
         pass
+        
 
 class ClothingItem(models.Model):
     """Model representing an individual item of clothing."""
@@ -61,6 +62,12 @@ class ClothingItem(models.Model):
     def get_absolute_url(self):
         pass
         
+    def display_tags(self):
+        """Return a string for the tags to display in admin."""
+        return ', '.join(tag.name for tag in self.tags.all())
+        
+    display_tags.short_description = 'Tags'
+        
 class ClothingWearDate(models.Model):
     """Model representing a date on which a clothing item was worn."""
     
@@ -80,3 +87,7 @@ class ClothingWearDate(models.Model):
     def get_absolute_url(self):
         pass
         
+    def display_clothing_items(self):
+        return ', '.join(clothing_item.name for clothing_item in self.clothing_items.all())
+        
+    display_clothing_items.short_description = 'Clothing Items'
