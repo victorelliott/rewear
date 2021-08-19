@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class ClothingTag(models.Model):
     """Model representing a user-defined tag to be applied to clothing items.
-    Tags are grouped into categories such as colors, brands, clothing types,
+    Tags may be grouped into categories such as colors, brands, clothing types,
     etc."""
     
     BRAND = 'BR'
@@ -88,6 +88,7 @@ class ClothingWearDate(models.Model):
         pass
         
     def display_clothing_items(self):
+        """Return a string for displaying clothing items in admin."""
         return ', '.join(clothing_item.name for clothing_item in self.clothing_items.all())
         
     display_clothing_items.short_description = 'Clothing Items'
