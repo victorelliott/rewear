@@ -43,10 +43,6 @@ class ClothingItem(models.Model):
     picture = models.ImageField(null=True, blank=True)
     price = models.DecimalField(max_digits=11, decimal_places=2, null=True, blank=True)
     # Stores numbers with two decimal places up to one billion (allows negatives).
-    purchase_date = models.DateField(null=True, blank=True)
-    # If not provided, use the earliest wear date.
-    previous_wears = models.PositiveIntegerField(null=True, blank=True)
-    # If provided, add to the number of wear dates.
     description = models.TextField(blank=True)
     tags = models.ManyToManyField(ClothingTag, blank=True)
     # Belongs to ClothingItem because tags will be added to clothes in the
