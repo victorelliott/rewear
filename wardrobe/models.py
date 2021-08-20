@@ -41,8 +41,7 @@ class ClothingItem(models.Model):
     
     # OPTIONAL FIELDS
     picture = models.ImageField(null=True, blank=True)
-    price = models.DecimalField(max_digits=11, decimal_places=2, null=True, blank=True)
-    # Stores numbers with two decimal places up to one billion (allows negatives).
+    price = models.PositiveIntegerField(null=True, blank=True)
     description = models.TextField(blank=True)
     tags = models.ManyToManyField(ClothingTag, blank=True)
     # Belongs to ClothingItem because tags will be added to clothes in the
