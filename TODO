@@ -1,9 +1,2 @@
-Look up:
-
-priority:
-write views with shortcuts
-write and include templates
-
-not priority:
-get absolute url
-implement image storage in database
+django image field
+forms (for add and edit views)

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class ClothingTag(models.Model):
@@ -55,7 +56,7 @@ class ClothingItem(models.Model):
         return self.name
         
     def get_absolute_url(self):
-        pass
+        return reverse('item', kwargs={'item_id': self.id})
         
     def display_tags(self):
         """Return a string for the tags to display in admin."""
