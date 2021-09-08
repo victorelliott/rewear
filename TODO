@@ -1,6 +1,9 @@
 Look up:
+
+priority:
+write views with shortcuts
+write and include templates
+
+not priority:
+get absolute url
 implement image storage in database
-how to write view shortcuts
-how to write and include templates
-how to wire urls
-how to create a new git branch

@@ -19,13 +19,13 @@ def log(request):
         """View for displaying the calendar and adding clothing items to dates."""
     )
 
-def item(request):
+def item(request, pk):
     return HttpResponse(
-        """View for adding a new item to the wardrobe."""
+        "View for adding a new item to the wardrobe (" + str(pk) + ")."
     )
 
-def edit(request):
+def edit(request, pk):
     return HttpResponse(
-        """View for editing the details of a clothing item."""
+        "View for editing the details of a clothing item (" + str(pk) + ")."
     )
 
