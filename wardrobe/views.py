@@ -13,3 +13,19 @@ def add(request):
         """Welcome to the add view. This is where new items of clothing 
         will be added to the user's list."""
         )
+
+def log(request):
+    return HttpResponse(
+        """View for displaying the calendar and adding clothing items to dates."""
+    )
+
+def item(request):
+    return HttpResponse(
+        """View for adding a new item to the wardrobe."""
+    )
+
+def edit(request):
+    return HttpResponse(
+        """View for editing the details of a clothing item."""
+    )
+

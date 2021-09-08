@@ -40,7 +40,7 @@ class ClothingItem(models.Model):
     name = models.CharField(max_length=200, unique=True)
     
     # OPTIONAL FIELDS
-    picture = models.ImageField(null=True, blank=True)
+    picture = models.ImageField(null=True, blank=True) # Needs further implementation.
     price = models.PositiveIntegerField(null=True, blank=True)
     description = models.TextField(blank=True)
     tags = models.ManyToManyField(ClothingTag, blank=True)
