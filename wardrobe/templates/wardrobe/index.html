@@ -5,5 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    
+    {% if item_list %}
+        <ul>
+            {% for item in item_list %}
+                <li>{{ item.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        No items.
+    {% endif %}
 </body>
