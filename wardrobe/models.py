@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 
-# Create your models here.
 class ClothingTag(models.Model):
     """Model representing a user-defined tag to be applied to clothing items.
     Tags may be grouped into categories such as colors, brands, clothing types,
@@ -27,7 +26,6 @@ class ClothingTag(models.Model):
         ordering = ['category', 'name']
         
     def __str__(self):
-        """Returns a string for representing a ClothingTag object."""
         return self.name
         
     def get_absolute_url(self):
@@ -52,7 +50,6 @@ class ClothingItem(models.Model):
         ordering = ['name']
     
     def __str__(self):
-        """Returns a string for representing a ClothingItem object."""
         return self.name
         
     def get_absolute_url(self):
@@ -77,14 +74,12 @@ class ClothingWearDate(models.Model):
         ordering = ['date']
     
     def __str__(self):
-        """Returns a string for representing a ClothingWearDate object."""
         return self.date.isoformat()
         
     def get_absolute_url(self):
         pass
         
     def display_clothing_items(self):
-        """Return a string for displaying clothing items in admin."""
         return ', '.join(clothing_item.name for clothing_item in self.clothing_items.all())
         
     display_clothing_items.short_description = 'Clothing Items'

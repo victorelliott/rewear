@@ -1,6 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
 
 from .models import ClothingItem
+from .forms import ClothingItemForm
 
 # Create your views here.
 def index(request):
@@ -9,7 +11,15 @@ def index(request):
     return render(request, 'wardrobe/index.html', context)
     
 def add(request):
-    return render(request, 'wardrobe/add.html')
+    if request.method == 'POST':
+        form = ClothingItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_item = form.save()
+            return redirect(new_item)
+    else:
+        form = ClothingItemForm()
+    context = {'form': form}
+    return render(request, 'wardrobe/add.html', context)
 
 def log(request):
     return render(request, 'wardrobe/log.html')
